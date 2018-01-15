@@ -1,0 +1,44 @@
+<h2>Employee lists</h2>
+
+  <form #employeeForm="ngForm" (ngSubmit)="onSubmit(employeeForm); firstname.value=''; lastname.value=''; age.value='';" class="form-input">
+    <span> First Name: </span> <input class="form-control" ngModel name="firstname" #firstname required>
+    <span> Last Name: </span> <input class="form-control" ngModel name="lastname" #lastname required>
+    <span> Age: </span> <input class="form-control" ngModel name="age" #age required>
+    <button type="submit" class="btn-submit">Submit</button>
+  </form>
+
+  <table class="employees">
+    <tr>
+      <th>#</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Age</th>
+      <th style="width:10%">Option</th>
+    </tr>
+    <tr *ngFor="let employee of employees">
+      <td>{{employee.id}}</td>
+      <td>{{employee.firstname}}</td>
+      <td>{{employee.lastname}}</td>
+      <td>{{employee.age}}</td>
+      <td>
+        <button class="delete pull-right" title="delete employee" (click)="delete(employee)">x</button>
+        <a routerLink="/employee/{{employee.id}}">
+          <button class="pull-right" title="view employee">View</button>
+        </a>
+      </td>
+    </tr>
+  </table>
+
+
+<!-- <ul class="employees">
+  <li *ngFor="let employee of employees">
+    <span class="badge">{{employee.id}}</span>
+    <span>Name: </span>{{employee.firstname}} {{employee.lastname}} <span> Age: </span> {{employee.age}}
+    <button class="delete pull-right" title="delete employee" (click)="delete(employee)">x</button>
+    <a routerLink="/employee/{{employee.id}}">
+      <button class="pull-right" title="view employee">View</button>
+    </a>
+  </li>
+</ul> -->
+
+<app-employee-detail [employee]="selectedEmployee"></app-employee-detail>

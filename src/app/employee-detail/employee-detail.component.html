@@ -1,0 +1,15 @@
+<div *ngIf="employee">
+  <h2>{{ employee.firstname }} Details</h2>
+
+  <div class="form-input">
+      <span> First Name: </span>
+      <input [(ngModel)]="employee.firstname" class="form-control" placeholder="First Name">
+      <span> Last Name: </span>
+      <input [(ngModel)]="employee.lastname" class="form-control" placeholder="Last Name">
+      <span> Age: </span>
+      <input [(ngModel)]="employee.age" class="form-control" placeholder="Age">
+
+      <button (click)="goBack()">go back</button>
+      <button (click)="save()" class="btn-submit">save</button>
+  </div>
+</div>
